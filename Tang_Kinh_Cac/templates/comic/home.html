@@ -1,0 +1,24 @@
+{% extends "comic/layout.html" %}
+
+{% block title %}Trang Chủ - Truyện Tranh{% endblock %}
+
+{% block content %}
+    <section class="mb-5">
+        <h2>🔥 Mới Cập Nhật</h2>
+        <div class="comic-grid">
+            {% for comic in new_comics %}
+            <a href="{{ url_for('comic.detail', name=comic.name) }}" class="comic-card">
+                <img src="{{ url_for('comic.get_cover', name=comic.name) }}" alt="{{ comic.name }}">
+                <div class="comic-info">
+                    <div class="comic-title">{{ comic.name }}</div>
+                </div>
+            </a>
+            {% endfor %}
+        </div>
+    </section>
+
+    <section>
+        <h2>📖 Đang Đọc Dở (Demo)</h2>
+        <p>Tính năng đang phát triển...</p>
+    </section>
+{% endblock %}

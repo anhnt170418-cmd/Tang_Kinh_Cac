@@ -1,0 +1,35 @@
+/* ⛔ [ĐÃ CHỐT] KHÔNG SỬA FILE NÀY */
+/* static/css/home.css */
+
+.dashboard-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 90vh; /* Chiếm 90% chiều cao màn hình */
+    gap: 30px;
+    padding: 20px;
+}
+
+.mode-card {
+    background: #1e1e1e;
+    width: 200px;
+    height: 300px;
+    border-radius: 15px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-decoration: none;
+    color: white;
+    transition: 0.3s;
+    border: 2px solid transparent;
+}
+
+.mode-card:hover {
+    transform: translateY(-10px);
+    border-color: #bb86fc;
+    box-shadow: 0 0 15px rgba(187, 134, 252, 0.5);
+}
+
+.mode-icon { font-size: 80px; margin-bottom: 20px; }
+.mode-title { font-size: 24px; font-weight: bold; }

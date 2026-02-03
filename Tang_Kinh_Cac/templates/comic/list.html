@@ -1,0 +1,21 @@
+{% extends "comic/layout.html" %}
+{% block title %}Danh Sách Truyện{% endblock %}
+
+{% block content %}
+    <div class="filter-bar">
+        <h1>Kho Truyện</h1>
+        </div>
+    <div class="comic-grid">
+        {% for comic in comics %}
+        <div class="comic-card">
+            <a href="{{ url_for('comic.detail', name=comic.name) }}">
+                <img src="{{ url_for('comic.get_cover', name=comic.name) }}">
+            </a>
+            <div class="comic-info">
+                <a href="{{ url_for('comic.detail', name=comic.name) }}" class="comic-title">{{ comic.name }}</a>
+                <div class="comic-meta">Chap mới: {{ comic.latest_chap }}</div>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+{% endblock %}

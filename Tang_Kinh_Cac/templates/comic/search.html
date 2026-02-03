@@ -1,0 +1,27 @@
+{% extends "comic/layout.html" %}
+{% block title %}Tìm Kiếm{% endblock %}
+
+{% block content %}
+    <div class="search-box" style="text-align: center; margin-bottom: 30px;">
+        <form action="{{ url_for('comic.search') }}" method="GET">
+            <input type="text" name="q" placeholder="Nhập tên truyện..." style="padding: 15px; width: 60%; font-size: 1.2rem; border-radius: 30px; border: none;">
+            <button type="submit" class="btn">Tìm</button>
+        </form>
+    </div>
+
+    {% if results %}
+        <h2>Kết quả cho "{{ query }}"</h2>
+        <div class="comic-grid">
+            {% for comic in results %}
+                <div class="comic-card">
+                    <a href="{{ url_for('comic.detail', name=comic.name) }}">
+                        <img src="{{ url_for('comic.get_cover', name=comic.name) }}">
+                    </a>
+                    <div class="comic-info">
+                        <div class="comic-title">{{ comic.name }}</div>
+                    </div>
+                </div>
+            {% endfor %}
+        </div>
+    {% endif %}
+{% endblock %}

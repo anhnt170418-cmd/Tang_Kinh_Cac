@@ -1,0 +1,26 @@
+{% extends "comic/layout.html" %}
+{% block title %}{{ info.title }}{% endblock %}
+
+{% block content %}
+    <div class="detail-layout" style="display: flex; gap: 30px;">
+        <div class="left-col" style="width: 300px;">
+            <img src="{{ url_for('comic.get_cover', name=comic_name) }}" style="width: 100%; border-radius: 10px;">
+            <h1 style="margin-top: 10px;">{{ info.title }}</h1>
+            <p><strong>Tác giả:</strong> {{ info.author }}</p>
+            <p><strong>Thể loại:</strong> {{ info.genres | join(', ') }}</p>
+            <a href="#" class="btn" style="width: 100%; display: block; text-align: center; margin-top: 20px;">Đọc Từ Đầu</a>
+        </div>
+
+        <div class="right-col" style="flex: 1;">
+            <h3>Danh Sách Chương</h3>
+            <div class="chapter-list">
+                {% for chap in chapters %}
+                <a href="{{ url_for('comic.read', name=comic_name, chap=chap) }}" 
+                   style="display: block; padding: 10px; border-bottom: 1px solid #333; color: #fff; text-decoration: none;">
+                   {{ chap }}
+                </a>
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+{% endblock %}
